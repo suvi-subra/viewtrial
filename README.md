@@ -18,6 +18,7 @@ system("R CMD INSTALL viewTRiAL")
 
 ```r
 
+library(devtools)
 devtools::install_github("suvi-subra/viewTRiAL")
 
 ```
