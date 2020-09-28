@@ -22,7 +22,7 @@ mod_recruit_ui <- function(id, label){
 #' recruit Server Function
 #'
 #' @noRd 
-mod_recruit_server <- function(input, output, session, baseline.data){
+mod_recruit_server <- function(input, output, session, baseline){
   ns <- session$ns
   
   output$expected <- renderValueBox({
@@ -32,7 +32,7 @@ mod_recruit_server <- function(input, output, session, baseline.data){
   
   output$actual <- renderValueBox({
     ## TODO: Enter expected sample size
-    no <- baseline.data() %>% nrow()
+    no <- baseline() %>% nrow()
     ## TODO: Determine percentage
     percent <- round(no/250*100, digits = 1)
     valueBox(value = paste0(no, " (", percent, "%)"), subtitle = "Recruited", color = "green")

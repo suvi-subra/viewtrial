@@ -40,29 +40,29 @@ mod_overview_ui <- function(id, label){
 #' overview Server Function
 #'
 #' @noRd 
-mod_overview_server <- function(input, output, session, baseline.data){
+mod_overview_server <- function(input, output, session, baseline){
   ns <- session$ns
  
   output$randomized <- renderValueBox({
-    valueBox(value = nrow(baseline.data()), subtitle = "Randomized", color = "green")
+    valueBox(value = nrow(baseline()), subtitle = "Randomized", color = "green")
   })
   
   output$withdrew <- renderValueBox({
     
     ## Fill in the value of withdrawn
-    no <- baseline.data() %>% filter(withdrawn == TRUE) %>% nrow()
+    no <- baseline() %>% filter(withdrawn == TRUE) %>% nrow()
     valueBox(value = no, subtitle = "Withdrawn", color = "red")
   })
   
   output$active <- renderValueBox({
-    no <- baseline.data() %>% filter(withdrawn == FALSE) %>% nrow()
+    no <- baseline() %>% filter(withdrawn == FALSE) %>% nrow()
     valueBox(value = no, subtitle = "Currently active", color = "blue")
   })
   
   output$recruitplot <- renderPlotly({
     
     ## Enrolment plot data ------------------------------------------------------------------------------------------------------------------- ##
-    plot_recruitment(baseline.data(), "date_random.date", "centre")
+    plot_recruitment(baseline(), "date_random.date", "centre")
     
     
   })

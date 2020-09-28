@@ -416,11 +416,24 @@ mod_recruit_server <- function(input, output, session, baseline.data){
 ## **Deploy the app**
 
 We will now return to have a look at the dev/03_deploy.R file. Here we have several ways to deploy the app. For example, if you would like to 
-deploy your app on shinyapps.io, you will have to run the following function to create an app.R file.
+deploy your app on shinyapps.io, you will have to run the following function to create an app.R file at the root of the package. This file calls the
+pkgload::load_all() function then in return calls the run_app() function which launches the package.
 
-```{r}
+```{r, eval=FALSE}
 
 golem::add_shinyappsio_file()
 
 ```
 
+# **Acknowledgements**
+
++ Concept development - Pascal Benkert, PhD, Senior Data Scientist (CTU Basel)
++ App modularization and packaging inspiration from secuTrialRshiny package - Milica Markovic, PhD, Former Data Scientist (CTU Basel) & Patrick Wright, PhD, Senior Data Scientist (CTU Basel)
++ Automation of secuTrial exports - Constantin Sluka, PhD, Service Head Data Science (CTU Basel)
++ Secure logins to dashboard - Thomas Zumbrunn, PhD, Head (CTU Basel) & Ramon Saccilotto, MD, Head (CTU Basel)
+
+# **References**
+
+1. Fay, C., Rochette, S., Guyader, V. and Girard, C. (2020) Engineering Production-Grade Shiny Apps, Available at: https://engineering-shiny.org/index.html (Accessed: 28th September 2020).
+
+2. Wickham, H. and Bryan, J. (2020) R Packages, Available at: https://r-pkgs.org/index.html (Accessed: 28th September 2020).

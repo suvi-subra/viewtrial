@@ -24,18 +24,18 @@ mod_consent_ui <- function(id, label){
 #' consent Server Function
 #'
 #' @noRd 
-mod_consent_server <- function(input, output, session, baseline.data){
+mod_consent_server <- function(input, output, session, baseline){
   ns <- session$ns
   
   output$consent <- renderValueBox({
-    no <- baseline.data() %>% nrow()
+    no <- baseline() %>% nrow()
     valueBox(value = no, subtitle = "informed consent(s) have been obtained", color = "red")
   })
   
   
   output$consenttable <- renderDataTable({
     
-    df <- baseline.data() %>%
+    df <- baseline() %>%
       arrange(pat_id) %>%
       select( "Patient ID" = pat_id, "Center" = centre, "Date of consent" = date_consent.date)
     
