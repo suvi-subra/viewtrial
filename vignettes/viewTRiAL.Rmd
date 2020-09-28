@@ -71,7 +71,7 @@ load(file = "../R/sysdata.rda")
 ```
 
 
-We use 4 dummy datasets in this prototype app. The structure of each dataset is displayed. 
+We use dummy datasets in this prototype app. The structure of each dataset is displayed. 
 
 ### Baseline data
 
