@@ -1,0 +1,564 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={viewTRiAL Package - A technical guide},
+            pdfauthor={Suvitha Subramaniam \& Katharina Klatte},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+% grffile has become a legacy package: https://ctan.org/pkg/grffile
+\IfFileExists{grffile.sty}{%
+\usepackage{grffile}
+}{}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{\textbf{viewTRiAL} Package - A technical guide}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Suvitha Subramaniam \& Katharina Klatte}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{2020-09-28}
+
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\newpage
+
+\hypertarget{about-viewtrial}{%
+\section{\texorpdfstring{\textbf{About
+viewTRiAL}}{About viewTRiAL}}\label{about-viewtrial}}
+
+The viewTRiAL package is a R Shiny (package \{shiny\} version 1.5.0) web
+application prototype (\url{https://dkfbasel.shinyapps.io/testApp/})
+designed to build and deploy Centralized Monitoring R shiny web
+applications in clinical studies within the Department of Clinical
+Research at University of Basel.
+
+\hypertarget{install-viewtrial}{%
+\section{\texorpdfstring{\textbf{Install
+viewTRiAL}}{Install viewTRiAL}}\label{install-viewtrial}}
+
+\hypertarget{installing-from-ctus-repository}{%
+\subsection{Installing from CTU's
+repository}\label{installing-from-ctus-repository}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\KeywordTok{setwd}\NormalTok{(}\StringTok{"~repos/proj/piCentralizedMonitoring/R"}\NormalTok{)}
+\KeywordTok{system}\NormalTok{(}\StringTok{"R CMD INSTALL viewTRiAL"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{installing-from-github}{%
+\subsection{Installing from GitHub}\label{installing-from-github}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"suvi-subra/viewTRiAL"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{running-viewtrial}{%
+\subsection{Running viewTRiAL}\label{running-viewtrial}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\KeywordTok{library}\NormalTok{(viewTRiAL)}
+\KeywordTok{run_app}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{lets-get-started}{%
+\section{\texorpdfstring{\textbf{Let's get
+started!}}{Let's get started!}}\label{lets-get-started}}
+
+The prototype has been developed as Shiny modules to address namespacing
+problems in Shiny User interface (UI) and server logic and to facilitate
+working through huge amount of code. In order to develop a
+production-grade Shiny App, the framework from the \{golem\} package
+version 0.2.1 was used. The structure of a golem framework is the same
+as that of a typical R package except that it allows for simplified
+development and deployment of packaged R Shiny applications.
+
+\hypertarget{load-prepare-and-save-your-data-data-raw}{%
+\subsection{\texorpdfstring{\textbf{Load, prepare and save your data}
+(data-raw/)}{Load, prepare and save your data (data-raw/)}}\label{load-prepare-and-save-your-data-data-raw}}
+
+For maximum efficiency in running your app, each time you launch it, you
+do not want it to be loaded more than once. Since we are packaging our R
+Shiny app, we can take advantage of storing data as internal data,
+making it unavailable to users. A script that loads, prepares and saves
+the data as internal data is stored under the data-raw/ folder. This
+script does not run automatically when the app is launched. Therefore, a
+line to run the script can be incorporated in the app\_server.R file.
+
+We use 4 dummy datasets in this prototype app. The structure of each
+dataset is displayed.
+
+\hypertarget{baseline-data}{%
+\subsubsection{Baseline data}\label{baseline-data}}
+
+This is baseline data containing one row for each patient. The pat\_id,
+centre, withdrawal status, randomization date and informed consent dates
+are included.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\KeywordTok{str}\NormalTok{(dummy_baseline)}
+\CommentTok{#> 'data.frame':    100 obs. of  5 variables:}
+\CommentTok{#>  $ pat_id           : int  100 51 13 40 90 50 31 79 7 61 ...}
+\CommentTok{#>  $ centre           : Factor w/ 5 levels "A","B","C","D",..: 4 3 5 3 2 5 2 2 3 1 ...}
+\CommentTok{#>  $ withdrawn        : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...}
+\CommentTok{#>  $ date_random.date : Date, format: "2019-08-15" "2019-08-23" "2020-04-28" "2020-06-04" ...}
+\CommentTok{#>  $ date_consent.date: Date, format: "2019-08-15" "2019-08-23" "2020-04-28" "2020-06-04" ...}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{track-your-developmentdev}{%
+\subsection{\texorpdfstring{\textbf{Track your
+development}(dev/)}{Track your development(dev/)}}\label{track-your-developmentdev}}
+
+The dev/ folder is used as a notebook to track steps of the development
+process. There are 3 files:
+
+\hypertarget{start.r}{%
+\subsubsection{01\_start.R}\label{start.r}}
+
+This file should be filled at the start. It contains functions to fill
+the DESCRIPTION file, set options adn dependencies.
+
+\hypertarget{dev.r}{%
+\subsubsection{02\_dev.R}\label{dev.r}}
+
+This file should be filled next to set the structure of core
+functionalities such as creating modules and other R functions.
+
+\hypertarget{deploy.r}{%
+\subsubsection{03\_deploy.R}\label{deploy.r}}
+
+Finally, this file contains functions that aid in deploying the app via
+Rstudio or Docker. This file contains functions to create either an
+app.R file or Docker file to deploy the app depending on the environment
+you choose. This is a necessary step as the R Shiny web application is
+packaged.
+
+\hypertarget{start-developingr}{%
+\subsection{\texorpdfstring{\textbf{Start
+developing}(R/)}{Start developing(R/)}}\label{start-developingr}}
+
+Core functions of the app are stored under the R/ folder.
+
+\hypertarget{app_ui.r}{%
+\subsubsection{app\_ui.R}\label{app_ui.r}}
+
+This function displays the input from its counterpart app\_server().
+Below is an example of how a menu item in the sidebar of a dashboard is
+created and its corresponding module called to display the content on
+the dashboard body.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{app_ui <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(request) \{}
+  
+  \KeywordTok{fluidPage}\NormalTok{(}
+    \KeywordTok{dashboardPage}\NormalTok{(}\DataTypeTok{skin =} \StringTok{"purple"}\NormalTok{,}
+    
+      \KeywordTok{dashboardHeader}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Study name"}\NormalTok{, }\DataTypeTok{titleWidth =} \DecValTok{300}\NormalTok{),}
+      \KeywordTok{dashboardSidebar}\NormalTok{(}
+        \KeywordTok{sidebarMenu}\NormalTok{(}
+          \CommentTok{## 1. Create a new menuitem here. List tabName in get_modules.R.}
+          \KeywordTok{menuItem}\NormalTok{(}\StringTok{"Overview"}\NormalTok{, }\DataTypeTok{tabName =}\NormalTok{ mod}\OperatorTok{$}\NormalTok{overview, }\DataTypeTok{icon =} \KeywordTok{icon}\NormalTok{(}\StringTok{"chart-pie"}\NormalTok{))}
+\NormalTok{        )}
+\NormalTok{      ),}
+      \KeywordTok{dashboardBody}\NormalTok{(}
+        \KeywordTok{tabItems}\NormalTok{(}
+          \CommentTok{## 2. Call the module corresponding to the menu item here}
+          \KeywordTok{mod_overview_ui}\NormalTok{(}\DataTypeTok{id =}\NormalTok{ mod}\OperatorTok{$}\NormalTok{overview, }\DataTypeTok{label =}\NormalTok{ mod}\OperatorTok{$}\NormalTok{overview)}
+\NormalTok{        )}
+\NormalTok{      )}
+      
+\NormalTok{    )}
+\NormalTok{  )}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+There are 4 items to adapt in this file:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  dashboardHeader(title): Change the study name
+\item
+  dateRangeInput(inputId): Replace the name of the date filter depending
+  on the date used to filter the data. (eg. Enrolment date). This filter
+  may be commented if not needed.
+\item
+  dateRangeInput(label): Replace the date ranges for filtering.
+\item
+  selectInput(choices, selected): Replace the vector of centers and
+  default center to be selected. This filter may be commented if not
+  needed.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{app_ui <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(request) \{}
+  
+    \CommentTok{## Get module label names}
+\NormalTok{    mod <-}\StringTok{ }\KeywordTok{get_modules}\NormalTok{()}
+  
+    \CommentTok{## Leave this function for adding external resources}
+    \KeywordTok{golem_add_external_resources}\NormalTok{()}
+    \CommentTok{## List the first level UI elements here }
+    \KeywordTok{fluidPage}\NormalTok{(}
+      \KeywordTok{dashboardPage}\NormalTok{(}\DataTypeTok{skin =} \StringTok{"purple"}\NormalTok{,}
+      \CommentTok{## Header}
+      \CommentTok{## }\AlertTok{TODO}\CommentTok{ (1): Change study name}
+      \KeywordTok{dashboardHeader}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Study name"}\NormalTok{, }\DataTypeTok{titleWidth =} \DecValTok{300}\NormalTok{),}
+      \CommentTok{## Sidebar}
+      \KeywordTok{dashboardSidebar}\NormalTok{(}\DataTypeTok{width =} \DecValTok{300}\NormalTok{,}
+        \KeywordTok{sidebarMenu}\NormalTok{(}
+            \CommentTok{## TAB 1: Overview}
+            \KeywordTok{menuItem}\NormalTok{(}\StringTok{"Overview"}\NormalTok{, }\DataTypeTok{tabName =}\NormalTok{ mod}\OperatorTok{$}\NormalTok{overview, }\DataTypeTok{icon =} \KeywordTok{icon}\NormalTok{(}\StringTok{"chart-pie"}\NormalTok{)),}
+            \CommentTok{## TAB 2: Performance measures}
+            \KeywordTok{menuItem}\NormalTok{(}\StringTok{"Performance measures"}\NormalTok{, }\DataTypeTok{icon =} \KeywordTok{icon}\NormalTok{(}\StringTok{"chart-pie"}\NormalTok{),}
+              \CommentTok{## TAB 2.1: Recruitment and retention}
+              \KeywordTok{menuSubItem}\NormalTok{(}\StringTok{"Recruitment and Retention"}\NormalTok{, }\DataTypeTok{tabName =}\NormalTok{ mod}\OperatorTok{$}\NormalTok{recruitment),}
+              \CommentTok{## TAB 2.2: Informed consent and eligibility}
+              \KeywordTok{menuSubItem}\NormalTok{(}\StringTok{"Informed consent and Eligibility"}\NormalTok{, }\DataTypeTok{tabName =}\NormalTok{ mod}\OperatorTok{$}\NormalTok{consent),}
+              \CommentTok{## TAB 2.3: Data quality}
+              \KeywordTok{menuSubItem}\NormalTok{(}\StringTok{"Data Quality"}\NormalTok{, }\DataTypeTok{tabName =}\NormalTok{ mod}\OperatorTok{$}\NormalTok{quality)),}
+            \CommentTok{## TAB 3: Study management}
+            \KeywordTok{menuItem}\NormalTok{(}\StringTok{"Study Management"}\NormalTok{, }\DataTypeTok{icon =} \KeywordTok{icon}\NormalTok{(}\StringTok{"chart-pie"}\NormalTok{),}
+              \CommentTok{## TAB 3.1: Visits}
+              \KeywordTok{menuSubItem}\NormalTok{(}\StringTok{"Visits"}\NormalTok{, }\DataTypeTok{tabName =}\NormalTok{ mod}\OperatorTok{$}\NormalTok{visits),}
+              \CommentTok{## TAB 3.2: Biosampling}
+              \KeywordTok{menuSubItem}\NormalTok{(}\StringTok{"Biosampling/Imaging data"}\NormalTok{, }\DataTypeTok{tabName =}\NormalTok{ mod}\OperatorTok{$}\NormalTok{lab),}
+              \CommentTok{## TAB 3.3: Safety}
+              \KeywordTok{menuSubItem}\NormalTok{(}\StringTok{"Safety management"}\NormalTok{, }\DataTypeTok{tabName =}\NormalTok{ mod}\OperatorTok{$}\NormalTok{safety),}
+              \CommentTok{## TAB 3.4: Staff management}
+              \KeywordTok{menuSubItem}\NormalTok{(}\StringTok{"Staff management"}\NormalTok{, }\DataTypeTok{tabName =}\NormalTok{ mod}\OperatorTok{$}\NormalTok{staff)),}
+            \CommentTok{## FILTER: Date range }
+            \CommentTok{## }\AlertTok{TODO}\CommentTok{ (2): Replace 2nd argument "Randomization date:" }
+            \KeywordTok{dateRangeInput}\NormalTok{(}\DataTypeTok{inputId =}  \StringTok{"period"}\NormalTok{, }\DataTypeTok{label =} \StringTok{"Randomization date:"}\NormalTok{,}
+              \CommentTok{## }\AlertTok{TODO}\CommentTok{ (3): Replace date ranges }
+              \DataTypeTok{start =} \KeywordTok{as.POSIXct}\NormalTok{(}\StringTok{"2019-06-01"}\NormalTok{),}
+              \DataTypeTok{end   =} \KeywordTok{as.POSIXct}\NormalTok{(}\KeywordTok{today}\NormalTok{())),}
+            \CommentTok{## FILTER: Center}
+            \CommentTok{## }\AlertTok{TODO}\CommentTok{ (4): Replace 3rd argument "choices" with a vector of centers }
+            \KeywordTok{selectInput}\NormalTok{(}\StringTok{"center"}\NormalTok{, }\StringTok{"Center"}\NormalTok{, }
+                          \DataTypeTok{choices =} \KeywordTok{c}\NormalTok{(}\StringTok{"All"}\NormalTok{, }\KeywordTok{sort}\NormalTok{(}\KeywordTok{levels}\NormalTok{(dummy_baseline}\OperatorTok{$}\NormalTok{centre))), }
+                          \DataTypeTok{selected =} \StringTok{"All"}\NormalTok{),}
+              \DataTypeTok{width =} \StringTok{"350"}\NormalTok{)),}
+        \CommentTok{## Body}
+        \KeywordTok{dashboardBody}\NormalTok{(}
+          \KeywordTok{tabItems}\NormalTok{(}
+            \CommentTok{## TAB 1: Overview}
+            \KeywordTok{mod_overview_ui}\NormalTok{(mod}\OperatorTok{$}\NormalTok{overview, }\DataTypeTok{label =}\NormalTok{ mod}\OperatorTok{$}\NormalTok{overview),}
+            \CommentTok{## TAB 2.1: Recruitment and retention}
+            \KeywordTok{mod_recruit_ui}\NormalTok{(mod}\OperatorTok{$}\NormalTok{recruitment, }\DataTypeTok{label =}\NormalTok{ mod}\OperatorTok{$}\NormalTok{recruitment),}
+            \CommentTok{## TAB 2.2: Informed consent and eligibility}
+            \KeywordTok{mod_consent_ui}\NormalTok{(mod}\OperatorTok{$}\NormalTok{consent, }\DataTypeTok{label =}\NormalTok{ mod}\OperatorTok{$}\NormalTok{consent)}
+\NormalTok{                   )}
+\NormalTok{        ) }\CommentTok{## dashboardBody}
+\NormalTok{      ) }\CommentTok{## dashboardPage}
+\NormalTok{    ) }\CommentTok{## fluidPage}
+
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{app_server.r}{%
+\subsubsection{app\_server.R}\label{app_server.r}}
+
+This file contains the server logic. In this file, reactive dataframes
+are created and a callModule() corresponding to the module UI created in
+app\_ui.R is called. Starting in Shiny 1.5.0, it is recommended to use
+moduleServer() instead of callModule() as it can be tested with
+testServer(). However, in our prototype since we have additional
+parameters to pass to each module function, we will stick to using
+callModule() as moduleServer() will not be able to handle that.
+
+There are 4 items to adapt in this file:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The input dataframes in both filter functions and callModule(data1)
+\item
+  The variable names of centre and filter date
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\CommentTok{#' The application server-side}
+\CommentTok{#' }
+\CommentTok{#' @param input,output,session Internal parameters for \{shiny\}. }
+\CommentTok{#'     DO NOT REMOVE.}
+\CommentTok{#' @import shiny}
+\CommentTok{#' @noRd}
+\NormalTok{app_server <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(input, output, session) \{}
+  
+  \CommentTok{## Get module label names}
+\NormalTok{  mod <-}\StringTok{ }\KeywordTok{get_modules}\NormalTok{()}
+  
+  \CommentTok{## Create reactive dataframes}
+\NormalTok{  bl_period <-}\StringTok{ }\KeywordTok{reactive}\NormalTok{(}
+    
+    \ControlFlowTok{if}\NormalTok{(input}\OperatorTok{$}\NormalTok{center }\OperatorTok{!=}\StringTok{ "All"}\NormalTok{)\{}
+      \CommentTok{## }\AlertTok{TODO}\CommentTok{ (1): Replace input dataframe  }
+      \CommentTok{## }\AlertTok{TODO}\CommentTok{ (2): Change variable names "centre" and "date.random.date"}
+      \KeywordTok{filter}\NormalTok{(}\DataTypeTok{df =}\NormalTok{ dummy_baseline, }
+\NormalTok{             centre }\OperatorTok{==}\StringTok{ }\NormalTok{input}\OperatorTok{$}\NormalTok{center }\OperatorTok{&}\StringTok{ }
+\StringTok{               }\NormalTok{date_random.date }\OperatorTok{>=}\StringTok{ }\NormalTok{input}\OperatorTok{$}\NormalTok{period[}\DecValTok{1}\NormalTok{] }\OperatorTok{&}\StringTok{ }
+\StringTok{               }\NormalTok{date_random.date }\OperatorTok{<=}\StringTok{ }\NormalTok{input}\OperatorTok{$}\NormalTok{period[}\DecValTok{2}\NormalTok{])}
+      
+\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{\{}
+      \CommentTok{## }\AlertTok{TODO}\CommentTok{ (3): Replace input dataframe }
+      \CommentTok{## }\AlertTok{TODO}\CommentTok{ (4): Change variable names "centre" and "date.random.date"}
+      \KeywordTok{filter}\NormalTok{(}\DataTypeTok{df =}\NormalTok{ dummy_baseline, }
+\NormalTok{             date_random.date }\OperatorTok{>=}\StringTok{ }\NormalTok{input}\OperatorTok{$}\NormalTok{period[}\DecValTok{1}\NormalTok{] }\OperatorTok{&}\StringTok{ }
+\StringTok{               }\NormalTok{date_random.date }\OperatorTok{<=}\StringTok{ }\NormalTok{input}\OperatorTok{$}\NormalTok{period[}\DecValTok{2}\NormalTok{])}
+\NormalTok{    \})}
+  
+  \CommentTok{# List the first level callModules here}
+  \CommentTok{## Overview tab}
+  \CommentTok{## }\AlertTok{TODO}\CommentTok{ (5): Replace input dataframe in argument data1}
+  \KeywordTok{callModule}\NormalTok{(mod_overview_server, mod}\OperatorTok{$}\NormalTok{overview, }\DataTypeTok{data1 =}\NormalTok{ bl_period)}
+  \KeywordTok{callModule}\NormalTok{(mod_recruit_server, mod}\OperatorTok{$}\NormalTok{recruitment, }\DataTypeTok{data1 =}\NormalTok{ bl_period)}
+  \KeywordTok{callModule}\NormalTok{(mod_consent_server, mod}\OperatorTok{$}\NormalTok{consent, }\DataTypeTok{data1 =}\NormalTok{ bl_period)}
+  
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{app_config.r}{%
+\subsubsection{app\_config.R}\label{app_config.r}}
+
+This file contains a get\_golem\_config() that retrieves app config. No
+changes to make here.
+
+\hypertarget{get_modules.r}{%
+\subsubsection{get\_modules.R}\label{get_modules.r}}
+
+This file contains a list of module label names. No changes to make here
+unless you add a new module.
+
+\hypertarget{mod_overview.r}{%
+\subsubsection{mod\_overview.R}\label{mod_overview.r}}
+
+This file contains the ui and server functions for the overview tab.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\CommentTok{#' overview UI Function}
+\CommentTok{#'}
+\CommentTok{#' @description A shiny Module.}
+\CommentTok{#'}
+\CommentTok{#' @param id,input,output,session Internal parameters for \{shiny\}.}
+\CommentTok{#'}
+\CommentTok{#' @noRd }
+\CommentTok{#'}
+\CommentTok{#' @importFrom shiny NS tagList }
+\NormalTok{mod_overview_ui <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(id, label)\{}
+\NormalTok{  ns <-}\StringTok{ }\KeywordTok{NS}\NormalTok{(id)}
+  
+    \KeywordTok{tabItem}\NormalTok{(}\DataTypeTok{tabName =}\NormalTok{ label,}
+            \KeywordTok{fluidRow}\NormalTok{(}
+              \CommentTok{## No.of participants randomized}
+              \KeywordTok{valueBoxOutput}\NormalTok{(}\KeywordTok{ns}\NormalTok{(}\StringTok{"randomized"}\NormalTok{), }\DataTypeTok{width =} \DecValTok{12}\NormalTok{)}
+\NormalTok{            ),}
+            
+            \KeywordTok{fluidRow}\NormalTok{(}
+              \KeywordTok{valueBoxOutput}\NormalTok{(}\KeywordTok{ns}\NormalTok{(}\StringTok{"active"}\NormalTok{), }\DataTypeTok{width =} \DecValTok{6}\NormalTok{),}
+              \KeywordTok{valueBoxOutput}\NormalTok{(}\KeywordTok{ns}\NormalTok{(}\StringTok{"withdrew"}\NormalTok{), }\DataTypeTok{width =} \DecValTok{6}\NormalTok{)}
+\NormalTok{            ),}
+            
+            \KeywordTok{fluidRow}\NormalTok{(}
+              \CommentTok{## Plot displaying no.of participants randomized across acute centers}
+              \KeywordTok{box}\NormalTok{(}
+                \DataTypeTok{width =} \DecValTok{6}\NormalTok{,}
+                \DataTypeTok{height =} \StringTok{"600"}\NormalTok{,}
+                \DataTypeTok{title =} \StringTok{"Recruitment by centers"}\NormalTok{,}
+                \DataTypeTok{status =} \StringTok{"primary"}\NormalTok{,}
+                \KeywordTok{plotlyOutput}\NormalTok{(}\KeywordTok{ns}\NormalTok{(}\StringTok{'recruitplot'}\NormalTok{), }\DataTypeTok{height =} \StringTok{"500"}\NormalTok{),}
+                \DataTypeTok{solidHeader =} \OtherTok{TRUE}\NormalTok{,}
+                \DataTypeTok{collapsible =} \OtherTok{FALSE}\NormalTok{),}
+              
+\NormalTok{            )}
+\NormalTok{    )}
+
+\NormalTok{\}}
+    
+\CommentTok{#' overview Server Function}
+\CommentTok{#'}
+\CommentTok{#' @noRd }
+\NormalTok{mod_overview_server <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(input, output, session, baseline.data)\{}
+\NormalTok{  ns <-}\StringTok{ }\NormalTok{session}\OperatorTok{$}\NormalTok{ns}
+ 
+\NormalTok{  output}\OperatorTok{$}\NormalTok{randomized <-}\StringTok{ }\KeywordTok{renderValueBox}\NormalTok{(\{}
+    \KeywordTok{valueBox}\NormalTok{(}\DataTypeTok{value =} \KeywordTok{nrow}\NormalTok{(}\KeywordTok{baseline.data}\NormalTok{()), }\DataTypeTok{subtitle =} \StringTok{"Randomized"}\NormalTok{, }\DataTypeTok{color =} \StringTok{"green"}\NormalTok{)}
+\NormalTok{  \})}
+  
+\NormalTok{  output}\OperatorTok{$}\NormalTok{withdrew <-}\StringTok{ }\KeywordTok{renderValueBox}\NormalTok{(\{}
+    
+    \CommentTok{## Fill in the value of withdrawn}
+\NormalTok{    no <-}\StringTok{ }\KeywordTok{baseline.data}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(withdrawn }\OperatorTok{==}\StringTok{ }\OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{nrow}\NormalTok{()}
+    \KeywordTok{valueBox}\NormalTok{(}\DataTypeTok{value =}\NormalTok{ no, }\DataTypeTok{subtitle =} \StringTok{"Withdrawn"}\NormalTok{, }\DataTypeTok{color =} \StringTok{"red"}\NormalTok{)}
+\NormalTok{  \})}
+  
+\NormalTok{  output}\OperatorTok{$}\NormalTok{active <-}\StringTok{ }\KeywordTok{renderValueBox}\NormalTok{(\{}
+\NormalTok{    no <-}\StringTok{ }\KeywordTok{baseline.data}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(withdrawn }\OperatorTok{==}\StringTok{ }\OtherTok{FALSE}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{nrow}\NormalTok{()}
+    \KeywordTok{valueBox}\NormalTok{(}\DataTypeTok{value =}\NormalTok{ no, }\DataTypeTok{subtitle =} \StringTok{"Currently active"}\NormalTok{, }\DataTypeTok{color =} \StringTok{"blue"}\NormalTok{)}
+\NormalTok{  \})}
+  
+\NormalTok{  output}\OperatorTok{$}\NormalTok{recruitplot <-}\StringTok{ }\KeywordTok{renderPlotly}\NormalTok{(\{}
+    
+    \CommentTok{## Enrolment plot data }
+    \KeywordTok{plot_recruitment}\NormalTok{(}\KeywordTok{baseline.data}\NormalTok{(), }\StringTok{"date_random.date"}\NormalTok{, }\StringTok{"centre"}\NormalTok{)}
+    
+    
+\NormalTok{  \})}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{mod_recruit.r}{%
+\subsubsection{mod\_recruit.R}\label{mod_recruit.r}}
+
+\hypertarget{mod_consent.r}{%
+\subsubsection{mod\_consent.R}\label{mod_consent.r}}
+
+\hypertarget{plot_recruitment.r}{%
+\subsubsection{plot\_recruitment.R}\label{plot_recruitment.r}}
+
+\hypertarget{run_app.r}{%
+\subsubsection{run\_app.R}\label{run_app.r}}
+
+
+\end{document}
