@@ -90,16 +90,17 @@ The dev/ folder is used as a notebook to track steps of the development process.
 
 ### 01_start.R 
 
-This file should be filled at the start. It contains functions to fill the DESCRIPTION file, set options adn dependencies.
+This file should be filled at the start. It contains functions to fill the DESCRIPTION file, set options and list dependencies.
 
 ### 02_dev.R
 
-This file should be filled next to set the structure of core functionalities such as creating modules and other R functions.
+This file should be filled to set the structure of core functionalities such as creating modules and other R functions. One is able to create a new 
+module (eg.mod_overview.R) by calling golem::add_module( name = "overview") and a R file (eg.filename.R) by calling usethis::use_r("filename").
 
 ### 03_deploy.R
 
 Finally, this file contains functions that aid in deploying the app via Rstudio or Docker. This file contains functions to create either
-an app.R file or Docker file to deploy the app depending on the environment you choose. This is a necessary step as the R Shiny web application 
+an app.R file or Docker file to deploy the app depending on the portal you choose. This is a necessary step as the R Shiny web application 
 is packaged. 
 
 ## **Start developing** (R/)
@@ -120,7 +121,7 @@ app_ui <- function(request) {
       dashboardHeader(title = "Study name", titleWidth = 300),
       dashboardSidebar(
         sidebarMenu(
-          ## 1. Create a new menuitem here. List tabName in get_modules.R.
+          ## 1. Create a new menu item here. List tabName in get_modules.R.
           menuItem("Overview", tabName = mod$overview, icon = icon("chart-pie"))
         )
       ),

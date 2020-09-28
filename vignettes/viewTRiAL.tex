@@ -243,21 +243,24 @@ process. There are 3 files:
 \subsubsection{01\_start.R}\label{start.r}}
 
 This file should be filled at the start. It contains functions to fill
-the DESCRIPTION file, set options adn dependencies.
+the DESCRIPTION file, set options and list dependencies.
 
 \hypertarget{dev.r}{%
 \subsubsection{02\_dev.R}\label{dev.r}}
 
-This file should be filled next to set the structure of core
-functionalities such as creating modules and other R functions.
+This file should be filled to set the structure of core functionalities
+such as creating modules and other R functions. One is able to create a
+new module (eg.mod\_overview.R) by calling golem::add\_module( name =
+``overview'') and a R file (eg.filename.R) by calling
+usethis::use\_r(``filename'').
 
 \hypertarget{deploy.r}{%
 \subsubsection{03\_deploy.R}\label{deploy.r}}
 
 Finally, this file contains functions that aid in deploying the app via
 Rstudio or Docker. This file contains functions to create either an
-app.R file or Docker file to deploy the app depending on the environment
-you choose. This is a necessary step as the R Shiny web application is
+app.R file or Docker file to deploy the app depending on the portal you
+choose. This is a necessary step as the R Shiny web application is
 packaged.
 
 \hypertarget{start-developing-r}{%
@@ -285,7 +288,7 @@ the dashboard body.
       \KeywordTok{dashboardHeader}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Study name"}\NormalTok{, }\DataTypeTok{titleWidth =} \DecValTok{300}\NormalTok{),}
       \KeywordTok{dashboardSidebar}\NormalTok{(}
         \KeywordTok{sidebarMenu}\NormalTok{(}
-          \CommentTok{## 1. Create a new menuitem here. List tabName in get_modules.R.}
+          \CommentTok{## 1. Create a new menu item here. List tabName in get_modules.R.}
           \KeywordTok{menuItem}\NormalTok{(}\StringTok{"Overview"}\NormalTok{, }\DataTypeTok{tabName =}\NormalTok{ mod}\OperatorTok{$}\NormalTok{overview, }\DataTypeTok{icon =} \KeywordTok{icon}\NormalTok{(}\StringTok{"chart-pie"}\NormalTok{))}
 \NormalTok{        )}
 \NormalTok{      ),}
