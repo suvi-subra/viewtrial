@@ -57,7 +57,8 @@ usethis::use_r("plot_recruitment")
 # Documentation
 
 ## Vignette ----
-# usethis::use_vignette("viewTRiAL")
+usethis::use_vignette("viewTRiAL")
+rmarkdown::render("vignettes/viewTRiAL.Rmd", output_format=c("pdf_document"))
 # devtools::build_vignettes()
 
 ## Code coverage ----

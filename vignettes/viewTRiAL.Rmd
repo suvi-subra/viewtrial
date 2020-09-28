@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 
 # **About viewTRiAL**
 
-The viewTRiAL package is a R Shiny (package {shiny} version 1.5.0) web application prototype (https://dkfbasel.shinyapps.io/testApp/) designed to build and deploy Centralized Monitoring 
+The viewTRiAL package is a R Shiny (package {shiny} version 1.5.0) web application prototype designed to build and deploy Centralized Monitoring 
 R shiny web applications in clinical studies within the Department of Clinical Research at University of Basel. 
 
 # **Install viewTRiAL**
@@ -41,6 +41,7 @@ system("R CMD INSTALL viewTRiAL")
 
 ```{r, eval=FALSE}
 
+library(devtools)
 devtools::install_github("suvi-subra/viewTRiAL")
 
 ```
@@ -83,7 +84,7 @@ str(dummy_baseline)
 
 ```
 
-## **Track your development**(dev/)
+## **Track your development** (dev/)
 
 The dev/ folder is used as a notebook to track steps of the development process. There are 3 files:
 
@@ -101,7 +102,7 @@ Finally, this file contains functions that aid in deploying the app via Rstudio 
 an app.R file or Docker file to deploy the app depending on the environment you choose. This is a necessary step as the R Shiny web application 
 is packaged. 
 
-## **Start developing**(R/)
+## **Start developing** (R/)
 
 Core functions of the app are stored under the R/ folder. 
 
@@ -276,7 +277,12 @@ This file contains a list of module label names. No changes to make here unless 
 
 ### mod_overview.R
 
-This file contains the ui and server functions for the overview tab. 
+This file contains the ui and server functions for the "Overview" tab. The "Overview" tab contains the following:
+
++ value boxes displaying the number of patients, randomized, currently active and withdrawn
++ line plot displaying recruitment over time by centers
+
+Here there are no changes required unless one wants to add value boxes for additional figures or plots.
 
 ```{r}
 
@@ -351,7 +357,6 @@ mod_overview_server <- function(input, output, session, baseline.data){
 }
 
 ```
-
 
 ### mod_recruit.R
 ### mod_consent.R

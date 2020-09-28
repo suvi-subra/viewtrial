@@ -143,10 +143,9 @@
 viewTRiAL}}{About viewTRiAL}}\label{about-viewtrial}}
 
 The viewTRiAL package is a R Shiny (package \{shiny\} version 1.5.0) web
-application prototype (\url{https://dkfbasel.shinyapps.io/testApp/})
-designed to build and deploy Centralized Monitoring R shiny web
-applications in clinical studies within the Department of Clinical
-Research at University of Basel.
+application prototype designed to build and deploy Centralized
+Monitoring R shiny web applications in clinical studies within the
+Department of Clinical Research at University of Basel.
 
 \hypertarget{install-viewtrial}{%
 \section{\texorpdfstring{\textbf{Install
@@ -170,6 +169,7 @@ repository}\label{installing-from-ctus-repository}}
 \begin{Shaded}
 \begin{Highlighting}[]
 
+\KeywordTok{library}\NormalTok{(devtools)}
 \NormalTok{devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"suvi-subra/viewTRiAL"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -232,9 +232,9 @@ are included.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{track-your-developmentdev}{%
-\subsection{\texorpdfstring{\textbf{Track your
-development}(dev/)}{Track your development(dev/)}}\label{track-your-developmentdev}}
+\hypertarget{track-your-development-dev}{%
+\subsection{\texorpdfstring{\textbf{Track your development}
+(dev/)}{Track your development (dev/)}}\label{track-your-development-dev}}
 
 The dev/ folder is used as a notebook to track steps of the development
 process. There are 3 files:
@@ -260,9 +260,9 @@ app.R file or Docker file to deploy the app depending on the environment
 you choose. This is a necessary step as the R Shiny web application is
 packaged.
 
-\hypertarget{start-developingr}{%
-\subsection{\texorpdfstring{\textbf{Start
-developing}(R/)}{Start developing(R/)}}\label{start-developingr}}
+\hypertarget{start-developing-r}{%
+\subsection{\texorpdfstring{\textbf{Start developing}
+(R/)}{Start developing (R/)}}\label{start-developing-r}}
 
 Core functions of the app are stored under the R/ folder.
 
@@ -471,7 +471,20 @@ unless you add a new module.
 \hypertarget{mod_overview.r}{%
 \subsubsection{mod\_overview.R}\label{mod_overview.r}}
 
-This file contains the ui and server functions for the overview tab.
+This file contains the ui and server functions for the ``Overview'' tab.
+The ``Overview'' tab contains the following:
+
+\begin{itemize}
+\tightlist
+\item
+  value boxes displaying the number of patients, randomized, currently
+  active and withdrawn
+\item
+  line plot displaying recruitment over time by centers
+\end{itemize}
+
+Here there are no changes required unless one wants to add value boxes
+for additional figures or plots.
 
 \begin{Shaded}
 \begin{Highlighting}[]
