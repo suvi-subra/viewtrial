@@ -1,6 +1,6 @@
 ---
 title: "**viewTRiAL** Package - A technical guide"
-author: "Suvitha Subramaniam"
+author: "Suvitha Subramaniam & Katharina Klatte"
 date: "`r Sys.Date()`"
 toc: true
 output: 
