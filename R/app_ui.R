@@ -11,7 +11,7 @@ app_ui <- function(request) {
 
   
   ## Source to create dummy dataset
-  source("../create_dummy_data.R")
+  #source("../create_dummy_data.R")
   
   ## Get module label names
   mod <- get_modules()

@@ -1,0 +1,13 @@
+name: viewTRiAL
+title: viewTRiAL
+username:
+account: dkfbasel
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2900767
+bundleId: 3678868
+url: https://dkfbasel.shinyapps.io/viewTRiAL/
+when: 1601297721.65587
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .Rbuildignore|vignettes/.gitignore|vignettes/viewTRiAL.pdf|vignettes/viewTRiAL.Rmd|vignettes/viewTRiAL.tex
