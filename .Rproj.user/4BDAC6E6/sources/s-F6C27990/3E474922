@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1601034384288.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "322789418",
+    "id" : "3E474922",
+    "lastKnownWriteTime" : 1601292853,
+    "last_content_update" : 1601292853781,
+    "path" : "~/repos/proj/piCentralizedMonitoring/R/viewTRiAL/vignettes/viewTRiAL.Rmd",
+    "project_path" : "vignettes/viewTRiAL.Rmd",
+    "properties" : {
+        "cursorPosition" : "2,28",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

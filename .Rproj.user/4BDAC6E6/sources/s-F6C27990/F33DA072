@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1601291374347.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3823596417",
+    "id" : "F33DA072",
+    "lastKnownWriteTime" : 1601291386,
+    "last_content_update" : 1601291386407,
+    "path" : "~/repos/proj/piCentralizedMonitoring/R/viewTRiAL/R/mod_recruit.R",
+    "project_path" : "R/mod_recruit.R",
+    "properties" : {
+        "cursorPosition" : "34,23",
+        "scrollLine" : "4"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
