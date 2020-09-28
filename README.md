@@ -1,20 +1,32 @@
-# viewtrial
+# **About viewTRiAL**
 
-A template for a R package containing a R shiny application for centralized monitoring.
+The viewTRiAL package is a R Shiny (package {shiny} version 1.5.0) web application prototype (https://dkfbasel.shinyapps.io/testApp/) designed to build and deploy Centralized Monitoring 
+R shiny web applications in clinical studies within the Department of Clinical Research at University of Basel. 
 
-## Installing from github with devtools
+# **Install viewTRiAL**
 
+## Installing from CTU's repository 
 
 ```r
-devtools::install_github("suvi-subra/viewtrial")
+
+setwd("~repos/proj/piCentralizedMonitoring/R")
+system("R CMD INSTALL viewTRiAL")
+
 ```
 
-## Run the shiny app secuTrialRshiny
-
-Run the app localy on your computer after installation      
-
+## Installing from GitHub
 
 ```r
+
+devtools::install_github("suvi-subra/viewTRiAL")
+
+```
+
+## Running viewTRiAL
+
+```r
+
 library(viewTRiAL)
-launch_viewTrial()
+run_app()
+
 ```
