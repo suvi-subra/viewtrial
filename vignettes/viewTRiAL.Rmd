@@ -26,6 +26,14 @@ knitr::opts_chunk$set(
 The viewTRiAL package is a R Shiny (package {shiny} version 1.5.0) web application prototype designed to build and deploy Centralized Monitoring 
 R shiny web applications in clinical studies within the Department of Clinical Research at University of Basel. 
 
+# **Acknowledgements**
+
++ Concept development - Pascal Benkert, PhD, Senior Data Scientist (CTU Basel)
++ App modularization and packaging inspiration from secuTrialRshiny package - Milica Markovic, PhD, Former Data Scientist (CTU Basel) & Patrick Wright, PhD, Senior Data Scientist (CTU Basel)
++ Automation of secuTrial exports - Constantin Sluka, PhD, Service Head Data Science (CTU Basel)
++ Secure logins to dashboard - Thomas Zumbrunn, PhD, Head (CTU Basel) & Ramon Saccilotto, MD, Head (CTU Basel)
+
+
 # **Install viewTRiAL**
 
 ## Installing from CTU's repository 
@@ -424,13 +432,6 @@ pkgload::load_all() function then in return calls the run_app() function which l
 golem::add_shinyappsio_file()
 
 ```
-
-# **Acknowledgements**
-
-+ Concept development - Pascal Benkert, PhD, Senior Data Scientist (CTU Basel)
-+ App modularization and packaging inspiration from secuTrialRshiny package - Milica Markovic, PhD, Former Data Scientist (CTU Basel) & Patrick Wright, PhD, Senior Data Scientist (CTU Basel)
-+ Automation of secuTrial exports - Constantin Sluka, PhD, Service Head Data Science (CTU Basel)
-+ Secure logins to dashboard - Thomas Zumbrunn, PhD, Head (CTU Basel) & Ramon Saccilotto, MD, Head (CTU Basel)
 
 # **References**
 
